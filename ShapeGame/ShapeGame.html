@@ -1,0 +1,113 @@
+<html>
+ 
+<head>
+    <title>JavaScript</title>
+    <style>
+            body {background-color: powderblue;}
+            .container {
+                width: 100px;
+                height: 150px;
+                background-color:saddlebrown;
+                border: 3px solid green;
+                padding: 10px;
+                position: absolute;
+                top:0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 15px;
+                margin: auto;
+            }
+            
+            button {
+                padding: 5px;
+
+            }
+            .message{
+                    font-family: fantasy;
+                    padding: 15px;
+            }
+            
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <button type="button">Start</button>
+        <div class="message"></div>
+        <div class="gameArea"></div>
+    </div>
+    <script>
+ 
+        let playArea = {};
+        playArea.inPlay = false;
+        const message = document.querySelector(".message");
+        const button = document.querySelector("button");
+        const gameArea = document.querySelector(".gameArea");
+        
+        messager("Click start button");
+        
+        button.addEventListener("click", function () {
+            if (!playArea.inPlay) {
+                playArea.inPlay  = true;
+                button.style.display = "none";
+                messager("Click the shapes as quickly as you see them");
+                playArea.timer = setTimeout(myBox,500);
+            } 
+        })
+  
+        function myBox() {
+            let el = document.createElement("div");
+            el.style.backgroundColor = getColor();
+            el.style.width = rand(30) + 70 + "px";
+            el.style.height = rand(30) + 70 + "px";
+            el.style.borderRadius = rand(100) + "%";
+            el.style.position = "relative";
+            el.style.top = rand(250) + "px";
+            el.style.left = rand(250) + "px";
+            el.addEventListener("click",hit);
+            el.start = new Date().getTime();
+            gameArea.appendChild(el);
+        }
+ 
+        function hit(e){
+            let end = new Date().getTime();
+            let start = e.target.start;
+            let duration = (end-start)/1000;
+            messager("It took "+duration+" seconds to click");
+            gameArea.children[0].remove();
+            playArea.timer = setTimeout(myBox,500);
+        }
+ 
+       /* function getColor(){
+            function col(){
+                let hex = rand(255).toString(16);
+                return ("0" + String(hex)).substr(-2);
+            }
+            return "#"+col()+col()+col();
+        }
+        */
+
+        
+        function getColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+        }
+        
+        
+        function rand(num) {
+            let tempVal = Math.floor(Math.random() * num);
+            return tempVal;
+        }
+ 
+        function messager(mes) {
+            message.innerHTML = mes;
+        }
+    </script>
+</body>
+ 
+</html>
