@@ -4,6 +4,6 @@ INSTRUCTIONS TO RUN
 2. Simply open up the HTML file , You will be good to go !
 
 Here are some screenshots of all the 3 projects:
-![Dancing Balls](screenshot1.png)
-![Magic Balls](screenshot2.png)
-![ShapeGame](screenshot3.png)
+![Dancing Balls](Screenshot1.png)
+![Magic Balls](Screenshot2.png)
+![ShapeGame](Screenshot3.png)
