@@ -1,1 +1,1 @@
-# Simple-JavaScript-Projects-Collection
+# Cool-JavaScript-Projects-Collection
